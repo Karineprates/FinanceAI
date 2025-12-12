@@ -439,7 +439,7 @@ function App() {
 
       <div className="grid two">
         <div className="panel">
-          <h3>Adicionar transacao</h3>
+          <h3>Adicionar transações</h3>
       <TransactionForm onSubmit={add} categories={categories} notify={pushToast} />
         </div>
         <div className="panel">
@@ -455,7 +455,7 @@ function App() {
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
               <h3 style={{ margin: 0 }}>
-                Insights locais{' '}
+                Insights {' '}
                 {insightsDuration !== null && (
                   <span
                     style={{
@@ -562,7 +562,7 @@ function App() {
       <div className="grid two">
         <div className="panel" style={{ minHeight: 320 }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 8, marginBottom: 8 }}>
-            <h3>Serie mensal</h3>
+            <h3>Série mensal</h3>
             <div style={{ display: 'flex', gap: 8, alignItems: 'center', flexWrap: 'wrap' }}>
               <PeriodButtons value={trendPeriod} onChange={setTrendPeriod} />
               <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>

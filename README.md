@@ -1,42 +1,54 @@
 # FinanceAI Dashboard
 
-Dashboard financeiro em React + Vite com gráficos (lazy-load), importação/exportação CSV/JSON, insights locais (sem depender de APIs externas) e persistência local.
+![FinanceAI Dashboard screenshot](./assets/financeai-dashboard.png)
+
+FinanceAI Dashboard is a lightweight React + Vite financial panel that combines filters, lazy-loaded charts, and locally computed insights so you can manage income and expenses without relying on external APIs.
+
+## Highlights
+- Local persistence for transactions, filters, and theme preferences.
+- Local insights that adapt to the current filters, surface alerts, and show generation time inside the dashboard.
+- Reliable import/export flows for CSV and JSON (with validation and deduplication) plus backup/restore with metadata.
+- Lazy-loaded charts and goals keep the bundle small while still visualizing monthly series, categories, and balance trends.
+- Responsive UX with table/card views and a hamburger menu for quick actions.
+
+## Key features
+1. Create and edit entries and exits, choose categories, enter values and notes, and filter or search by month, category, or date range.
+2. Persistent history with sorting, highlights, and inline edit/delete controls.
+3. CSV and JSON export plus advanced import (2 MB or 2000-line limits, field validation, duplicate filtering).
+4. Backup and restore operations that ship metadata for easy handoff.
+5. Local insights that explain the balance, highlight alerts, and suggest next steps without leaving the browser.
+6. Chart section (monthly series, categories, balance trend) with configurable goals and React.lazy loading.
 
 ## Stack
-- React 19 + TypeScript + Vite
-- Zustand (estado), Recharts (gráficos), Papa Parse (CSV)
-- Insights calculados localmente em `src/utils/ai.ts`
+- React 19, TypeScript, and Vite
+- Zustand for state management and Recharts for charts (loaded dynamically)
+- Papa Parse plus custom utils for CSV/JSON import and export
+- Insights live in src/utils/ai.ts and receipt parsing lives in src/utils/receiptParser.ts
 
-## Rodando local
+## Getting started
 ```bash
 npm install
-npm run dev -- --force       # dev server
-npm run build                # build produção
+npm run dev -- --force       # development server
+npm run build                # production build
 ```
 
-## Deploy (Vercel / Netlify)
-1. Suba o repo para GitHub.
-2. Build command: `npm run build`
-3. Output: `dist`
+## Useful scripts
+- `npm run dev` - run the dev server with hot reload
+- `npm run build` - bundle TypeScript and Vite for production
+- `npm run preview` - serve the production build locally
+- `npm run lint` - run the linter
+- `npm test` - run Vitest unit tests
+- `npm run test:e2e` - run Playwright E2E tests (run `npx playwright install --with-deps` first)
 
-### Notas de segurança
-- Não há dependência de chaves de API; `.env.example` permanece vazio.
-- Não commitar chaves em `.env.local`.
+## CI and deploy
+- GitHub Actions workflow runs `npm run lint`, `npm test`, and `npm run build`.
+- Deploy to Vercel or Netlify by running `npm run build` and publishing the dist folder.
 
-## Funcionalidades principais
-- Entradas/saídas com edição, filtros (mês, categoria, intervalo de datas, busca), persistência de filtros no `localStorage` e na URL.
-- Importar/Exportar CSV e JSON (limite 2MB/2000 linhas, validação de campos), Backup/Restore com metadados; import deduplica registros.
-- Insights locais com hora de geração, contexto dos filtros e botão de recalcular.
-- Gráficos lazy-loaded, com meta configurável na tendência e no gráfico mensal.
-- Menu hambúrguer para ações rápidas (import/export/backup) em qualquer tamanho de tela.
+## Security and env vars
+- No API keys are required; `.env.example` stays empty and `.env.local` is ignored by default.
+- Never commit secrets; keep configuration in the ignored `.env.local`.
 
-## Scripts
-- `npm run dev` – dev server
-- `npm run build` – build produção (tsc + Vite)
-- `npm run preview` – servir build local
-- `npm run lint` – lint
-- `npm test` – testes unitários (Vitest)
-- `npm run test:e2e` – testes E2E (Playwright; instale deps com `npx playwright install`)
-
-## CI
-- Workflow GitHub Actions roda `npm run lint`, `npm test` e `npm run build`. Etapas E2E podem ser habilitadas adicionando `npx playwright install --with-deps` e `npm run test:e2e`.
+## Next steps
+1. Add Playwright E2E to CI (`npm run test:e2e` after `npx playwright install --with-deps`).
+2. Customize goals and filters via localStorage.
+3. Update `assets/financeai-dashboard.png` every time the UI changes.

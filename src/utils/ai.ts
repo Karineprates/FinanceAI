@@ -9,7 +9,7 @@ type InsightResult = {
 };
 
 export async function getInsights(tx: Transaction[]): Promise<InsightResult> {
-  if (!tx.length) return { data: ['Adicione transacoes para ver insights.'], source: 'api' };
+  if (!tx.length) return { data: ['Adicione transações para ver insights.'], source: 'api' };
   const stats = buildStats(tx);
   const groqKey = (import.meta.env.VITE_GROQ_API_KEY as string | undefined)?.trim();
 
