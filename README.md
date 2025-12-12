@@ -1,4 +1,4 @@
-# FinanceAI Dashboard
+# FinanceAI Dashboard 📊
 
 ![FinanceAI Dashboard screenshot](./assets/financeai-dashboard.png)
 
